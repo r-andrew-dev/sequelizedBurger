@@ -18,22 +18,21 @@ router.get("/burgers", function(req, res) {
 
 // post route -> back to index
 router.post("/burgers/create", function(req, res) {
-  // takes the request object using it as input for burger.addBurger
-  burger.Burger.create(req.body.burger_name, function(result) {
-    // wrapper for orm.js that using MySQL insert callback will return a log to console,
-    // render back to index with handle
-    console.log(result);
+  console.log(req.body)
+  burger.Burger.create({
+    burger_name: req.body.burger_name,
+    devoured: false,
+   })
+   .then(function(newBurger) {
+    console.log(newBurger);
     res.redirect("/");
   });
 });
 
 // put route -> back to index
 router.put("/burgers/:id", function(req, res) {
-  Burger.update(req.params.id, function(result) {
-    // wrapper for orm.js that using MySQL update callback will return a log to console,
-    // render back to index with handle
-    console.log(result);
-    // Send back response and let page reload from .then in Ajax
+  burger.Burger.update(req.params.id).then(function(eatenBurger) {
+    console.log(eatenBurger);
     res.sendStatus(200);
   });
 });
