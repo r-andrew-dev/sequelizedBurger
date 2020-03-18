@@ -5,25 +5,21 @@ module.exports = {
     return queryInterface.bulkInsert('Burgers', [
       {
         burger_name: 'Jalepeno Burger',
-        devoured: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
       burger_name: 'Cheese Burger',
-      devoured: false,
       createdAt: new Date(),
       updatedAt: new Date()
       },
       {
       burger_name: 'Hamburger',
-      devoured: false,
       createdAt: new Date(),
       updatedAt: new Date()
       },
       {
       burger_name: 'Pizza Burger',
-      devoured: false,
       createdAt: new Date(),
       updatedAt: new Date()
       }])
