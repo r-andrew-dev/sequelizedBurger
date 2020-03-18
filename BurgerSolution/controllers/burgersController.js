@@ -31,7 +31,11 @@ router.post("/burgers/create", function(req, res) {
 
 // put route -> back to index
 router.put("/burgers/:id", function(req, res) {
-  burger.Burger.update(req.params.id).then(function(eatenBurger) {
+  burger.Burger.update({devoured: true}, {
+    where: {
+      id: req.params.id
+    }
+  }).then(function(eatenBurger) {
     console.log(eatenBurger);
     res.sendStatus(200);
   });
